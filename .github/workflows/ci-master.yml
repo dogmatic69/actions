@@ -127,12 +127,17 @@ jobs:
         run: |
           make -C ${GITHUB_WORKSPACE}/src/documentation run
       - name: Commit files
-        run: |
+        run: >
           cd ${GITHUB_WORKSPACE}
+
           git config --local user.email "actions@dogmatic69.com"
+
           git config --local user.name "Action Bot"
+
           git add docs || true
-          git commit -m "Update documentation" -a || true
+
+          git commit -m "chore: update documentation (auto-generated)" -a ||
+          true
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:

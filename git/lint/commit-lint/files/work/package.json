@@ -1,0 +1,14 @@
+{
+  "name": "commit-analyiser",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-angular": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@commitlint/config-patternplate": "^8.2.0",
+    "conventional-changelog-conventionalcommits": "4.2.3",
+    "conventional-changelog-angular": "5.0.6"
+  }
+}

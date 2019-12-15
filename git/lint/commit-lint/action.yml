@@ -1,0 +1,48 @@
+name: Commit Lint
+description: |
+  `commitlint` checks if your commit messages meet the conventional commit format.
+
+  Adapted from [commit-lint](https://github.com/conventional-changelog/commitlint)
+  See also [commitlint-analizer](https://github.com/semantic-release/commit-analyzer) for more.
+inputs:
+  path:
+    description: |
+      The path to the repository that will be checked. Defaults to the location
+      of `actions/checkout` default path.
+    required: false
+    default: /github/workspace
+  title_min_length:
+    description: |
+      Min length of a commit title
+    required: false
+    default: 10
+  title_max_length:
+    description: |
+      Max length of a commit title
+    required: false
+    default: 50
+  body_max_line_length:
+    description: |
+      Maximum length of a line in the commit body. Defaults to 80
+    required: false
+    default: 80
+  pattern:
+    description: |
+      A ticket reference that should be matched. Leave empty for no reference
+      requirements.
+    required: false
+    default:
+  pattern_every_commit:
+    description: |
+      Require the `pattern` to match every commit. Defaults to require one
+      match per PR.
+    required: false
+    default: false
+  pattern_in_title:
+    description: |
+      Allow or disallow having a ticket reference in the title, defaults to false.
+    required: false
+    default: false
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
