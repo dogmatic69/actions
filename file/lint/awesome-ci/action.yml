@@ -32,7 +32,7 @@ inputs:
   ignore:
     description: 'List of paths to be ignored'
     required: false
-    default: .git,*.png,*.jpg,*.jpeg
+    default: .git,*.png,*.jpg,*.jpeg,*.ico
 runs:
   using: 'docker'
   image: 'Dockerfile'
