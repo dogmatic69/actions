@@ -43,7 +43,7 @@ The path to the repository that will be checked. Defaults to the location of `ac
 List of paths to be ignored
 
 - required: False
-- default: .git,*.png,*.jpg,*.jpeg,*.ico
+- default: .git/,*.png,*.jpg,*.jpeg,*.ico
 
 
 
