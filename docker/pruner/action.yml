@@ -1,0 +1,17 @@
+name: Registry Pruner
+description: |
+  This action will remove images from the registry per the configuration
+  passed. This action only works for private registries as it is not possible
+  to remove image from a public registry.
+
+  See the GitHub registry [Docs](https://help.github.com/en/packages/publishing-and-managing-packages/deleting-a-package#deleting-a-version-of-a-private-package)
+
+inputs:
+  keep:
+    description: The number of images to keep
+    required: false
+    default: 5
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
