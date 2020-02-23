@@ -4,6 +4,7 @@ set -e
 MAKEFILE=$(realpath ${INPUT_PATH})
 OUTPUT=/output/checkmake.txt
 
+
 #==============================================================================
 function finish {
   cat ${OUTPUT}
