@@ -8,6 +8,9 @@ inputs:
   image:
     description: 'The name of the docker image to scan'
     required: true
+  token:
+    description: 'A GitHub token to authenticate requests for the Trivy cache'
+    required: false
   output:
     description: 'Path to trivy output'
     required: false

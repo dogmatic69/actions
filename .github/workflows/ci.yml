@@ -96,6 +96,7 @@ jobs:
         run: docker build -t ${{ matrix.image }} ./${{ matrix.image }}
       - uses: dogmatic69/actions/docker/audit/trivy@master
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           image: ${{ matrix.image }}
           path: ./${{ matrix.image }}
 
