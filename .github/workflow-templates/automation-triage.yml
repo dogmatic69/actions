@@ -1,9 +1,15 @@
-name: Pull Request Triage
-
 on:
 - pull_request
 
-jobs:
+git: false
+trivy: false
+file: false
+docker: false
+project: false
+terraform: false
+publish: false
+
+raw:
   triage:
     runs-on: ubuntu-latest
     steps:

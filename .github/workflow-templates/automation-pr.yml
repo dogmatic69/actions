@@ -1,6 +1,3 @@
-
-name: Create WIP PR
-
 on:
   push:
     branches:
@@ -8,7 +5,15 @@ on:
     - "bugfix/*"
     - "release/*"
 
-jobs:
+git: false
+trivy: false
+file: false
+docker: false
+project: false
+terraform: false
+publish: false
+
+raw:
   auto-pull-request-feature:
     name: Auto PR Feature
     runs-on: ubuntu-latest

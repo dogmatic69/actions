@@ -1,0 +1,117 @@
+name: ci pr
+'on':
+  pull_request:
+    branches:
+      - master
+jobs:
+  file-lint:
+    name: File Lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: cr
+        uses: dogmatic69/actions/file/lint/awesome-ci@master
+        with:
+          command: file-cr
+      - name: crlf
+        uses: dogmatic69/actions/file/lint/awesome-ci@master
+        with:
+          command: file-crlf
+      - name: trailing-newline
+        uses: dogmatic69/actions/file/lint/awesome-ci@master
+        with:
+          command: file-trailing-newline
+      - name: trailing-single-newline
+        uses: dogmatic69/actions/file/lint/awesome-ci@master
+        with:
+          command: file-trailing-single-newline
+      - name: utf8
+        uses: dogmatic69/actions/file/lint/awesome-ci@master
+        with:
+          command: file-utf8
+      - name: utf8-bom
+        uses: dogmatic69/actions/file/lint/awesome-ci@master
+        with:
+          command: file-utf8-bom
+      - name: trailing-space
+        uses: dogmatic69/actions/file/lint/awesome-ci@master
+        with:
+          command: file-trailing-space
+      - name: Checkmake
+        uses: dogmatic69/actions/file/lint/checkmake@master
+    runs-on: ubuntu-latest
+  git-lint:
+    name: Git Lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+      - name: Git conflicts
+        uses: dogmatic69/actions/git/lint/awesome-ci@master
+        with:
+          command: git-conflicts
+      - name: Git ignored
+        uses: dogmatic69/actions/git/lint/awesome-ci@master
+        with:
+          command: git-ignored
+      - name: Git Leaks
+        uses: dogmatic69/actions/git/audit/gitleaks@master
+    runs-on: ubuntu-latest
+  audit-trivy:
+    name: Audit Trivy
+    strategy:
+      matrix:
+        image:
+          - docker/audit/trivy
+          - docker/lint/hadolint
+          - docker/service
+          - file/lint/awesome-ci
+          - file/lint/checkmake
+          - git/audit/gitleaks
+          - git/lint/awesome-ci
+          - src/documentation
+          - src/configurator
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Build
+        run: |
+          docker build -t ${{ matrix.image }} ./${{ matrix.image }}
+      - name: 'Trivy Scan ${{ matrix.image }}'
+        uses: dogmatic69/actions/docker/audit/trivy@master
+        with:
+          token: '${{ secrets.GITHUB_TOKEN }}'
+          image: '${{ matrix.image }}'
+          path: './${{ matrix.image }}'
+    runs-on: ubuntu-latest
+  dockerfile-lint:
+    name: Dockerfile lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Hadolint
+        uses: dogmatic69/actions/docker/lint/hadolint@master
+    runs-on: ubuntu-latest
+  docker-done:
+    name: Docker Done
+    needs:
+      - audit-trivy
+      - dockerfile-lint
+    steps:
+      - run: true
+    runs-on: ubuntu-latest
+  all-done:
+    name: All Done
+    needs:
+      - file-lint
+      - git-lint
+    steps:
+      - run: true
+    runs-on: ubuntu-latest

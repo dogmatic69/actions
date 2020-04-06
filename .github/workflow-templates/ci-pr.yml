@@ -1,0 +1,34 @@
+
+on:
+  pull_request:
+    branches: ['master']
+
+publish: false
+project: false
+terraform: false
+
+file:
+  cr: []
+  crlf: []
+  trailing-newline: []
+  trailing-single-newline: []
+  utf8: []
+  utf8-bom: []
+  trailing-space: []
+
+git:
+  - conflicts
+  - ignored
+
+trivy:
+  matrix:
+    image:
+      - docker/audit/trivy
+      - docker/lint/hadolint
+      - docker/service
+      - file/lint/awesome-ci
+      - file/lint/checkmake
+      - git/audit/gitleaks
+      - git/lint/awesome-ci
+      - src/documentation
+      - src/configurator

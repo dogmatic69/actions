@@ -25,15 +25,12 @@ run: build
 		--env GITHUB_REPOSITORY=$(GITHUB_REPOSITORY) \
 		--env INPUT_PATH=$(GITHUB_WORKSPACE) \
 		--env INPUT_COMMAND=git-$(COMMAND) \
-		-v $(GITHUB_WORKSPACE):/work \
-		${DOCKER_IMAGE}
+		-v $(GITHUB_WORKSPACE):/work ${DOCKER_IMAGE}
 
 .PHONY: debug
 debug: build
-	docker run --rm -it \
+	docker run --rm -it --entrypoint sh \
 		--env GITHUB_REPOSITORY=$(GITHUB_REPOSITORY) \
 		--env INPUT_PATH=$(GITHUB_WORKSPACE) \
 		--env INPUT_COMMAND=git-$(COMMAND) \
-		--entrypoint sh \
-		-v $(realpath ../../):$(GITHUB_WORKSPACE) \
-		${DOCKER_IMAGE}
+		-v $(realpath ../../):$(GITHUB_WORKSPACE) ${DOCKER_IMAGE}
