@@ -15,7 +15,7 @@ The path to the repository that will be checked. Defaults to the location of `ac
 - required: False
 - default: /github/workspace
 
-#### max-body-length
+#### max_body_length
 
 The maximum number of lines in a make target.
 
@@ -49,4 +49,4 @@ This example has all possible inputs, with dummy data.
         - uses: file/lint/checkmake@master
           with:
             path: foobar
-            max-body-length: foobar
+            max_body_length: foobar
