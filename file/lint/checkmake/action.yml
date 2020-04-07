@@ -10,7 +10,7 @@ inputs:
       The path to the repository that will be checked. Defaults to the location of `actions/checkout` default path.
     required: false
     default: /github/workspace
-  max-body-length:
+  max_body_length:
     description: |
       The maximum number of lines in a make target.
     required: false
