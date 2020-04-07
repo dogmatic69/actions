@@ -15,6 +15,14 @@ The path to the repository that will be checked. Defaults to the location of `ac
 - required: False
 - default: /github/workspace
 
+#### max-body-length
+
+The maximum number of lines in a make target.
+
+
+- required: False
+- default: 10
+
 
 
 ## Example
@@ -27,7 +35,8 @@ This example has only required inputs, with dummy data
       steps:
         - uses: actions/checkout@master
         - uses: file/lint/checkmake@master
-          null
+          with:
+
 
 
 This example has all possible inputs, with dummy data.
@@ -40,3 +49,4 @@ This example has all possible inputs, with dummy data.
         - uses: file/lint/checkmake@master
           with:
             path: foobar
+            max-body-length: foobar

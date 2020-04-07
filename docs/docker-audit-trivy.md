@@ -14,6 +14,13 @@ The name of the docker image to scan
 - required: True
 - default: None
 
+#### token
+
+A GitHub token to authenticate requests for the Trivy cache
+
+- required: False
+- default: None
+
 #### output
 
 Path to trivy output
@@ -45,6 +52,7 @@ This example has only required inputs, with dummy data
 
 
 
+
 This example has all possible inputs, with dummy data.
 
     trivy-scan:
@@ -55,5 +63,6 @@ This example has all possible inputs, with dummy data.
         - uses: docker/audit/trivy@master
           with:
             image: foobar
+            token: foobar
             output: foobar
             ignore: foobar
