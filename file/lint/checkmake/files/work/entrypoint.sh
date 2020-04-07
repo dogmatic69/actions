@@ -8,7 +8,7 @@ echo "Inputh Path: [${INPUT_PATH}]";
 
 echo "
 [maxbodylength]
-maxBodyLength = ${INPUT_MAX_BODY_LENGHT:-5}" >> /tmp/checkmake.ini
+maxBodyLength = ${INPUT_MAX_BODY_LENGTH:-5}" >> /tmp/checkmake.ini
 
 echo "Searching for Makefiles on [${INPUT_PATH}]"
 
