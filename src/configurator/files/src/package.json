@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "js-yaml": "^3.13.1",
+    "slugify": "^1.4.0"
+  },
+  "name": "src",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}

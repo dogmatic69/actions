@@ -1,0 +1,57 @@
+on:
+  push:
+    branches:	['master']
+
+publish: false
+project: false
+terraform: false
+
+file:
+  cr: []
+  crlf: []
+  trailing-newline: []
+  trailing-single-newline: []
+  utf8: []
+  utf8-bom: []
+  trailing-space: []
+
+git:
+  - conflicts
+  - ignored
+
+trivy:
+  matrix:
+    image:
+      - docker/audit/trivy
+      - docker/lint/hadolint
+      - docker/service
+      - file/lint/awesome-ci
+      - file/lint/checkmake
+      - git/audit/gitleaks
+      - git/lint/awesome-ci
+      - src/documentation
+      - src/configurator
+
+raw:
+  update-docs:
+    name: Update Documentation
+    runs-on: ubuntu-latest
+    needs:
+      - all-done
+    if: github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@master
+      - name: Build docs
+        run: |
+          make -C ${GITHUB_WORKSPACE}/src/documentation run
+      - name: Commit files
+        run: |
+          cd ${GITHUB_WORKSPACE}
+          git config --local user.email "actions@dogmatic69.com"
+          git config --local user.name "Action Bot"
+          git add docs || true
+          git commit -m "Update documentation" -a || true
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
