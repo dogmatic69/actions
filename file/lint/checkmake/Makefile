@@ -15,7 +15,7 @@ build:
 
 .PHONY: run
 run: build
-	docker run --rm -it \
+	docker run --rm -i \
 		-v /github/workspace:/github/workspace \
 		-v /var/run/docker.sock:/var/run/docker.sock \
 		-e INPUT_PATH=/github/workspace \
