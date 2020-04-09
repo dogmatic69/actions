@@ -72,7 +72,20 @@ module.exports = (() => {
     return ret;
   };
 
-  self.conditionalStep = (condition, step) => condition === true ? [step] : [];
+  self.additionalSteps = (steps) => {
+    return (Object.keys(steps || {})).map(step => {
+      const config = steps[step];
+
+      if (typeof config === 'string') {
+        return {
+          name: step,
+          uses: config,
+        };
+      }
+      config.name = config.name || step;
+      return config;
+    });
+  }
 
   self.gitChecks = (config) => {
     return (config || []).map(check => ({

@@ -60,7 +60,7 @@ jobs:
       - name: Git Leaks
         uses: dogmatic69/actions/git/audit/gitleaks@master
       - name: Commit Lint
-        uses: 'uses: dogmatic69/actions/git/lint/commit-lint@master'
+        uses: dogmatic69/actions/git/lint/commit-lint@master
     runs-on: ubuntu-latest
   audit-trivy:
     name: Audit Trivy

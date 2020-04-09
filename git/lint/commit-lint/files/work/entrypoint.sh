@@ -7,17 +7,19 @@ REPO=$(realpath ${INPUT_PATH})
 
 CONFIGS=( commitlint.config.js .commitlintrc.js .commitlintrc.json .commitlintrc.yml )
 for config in "${CONFIGS[@]}"; do
-  if [ -z "${CONFIG_FILE}" ] && [ -f ${REPO}/${config} ]; then
+  if [ -z "${CONFIG_FILE}" ] && [ -f "${REPO}/${config}" ]; then
     CONFIG_FILE="${REPO}/${config}"
   fi
 done
 
-if (( ${CONFIG_FILE} == 0 )); then
+if [ -z ${CONFIG_FILE} ]; then
   echo "Config for commitlint not found";
   exit 2;
 fi
 
 echo "config: ${CONFIG_FILE}"
+
+git fetch
 
 start=$(git -C "${REPO}" rev-parse --short "origin/${GITHUB_BASE_REF:-master}")
 end=$(git -C "${REPO}" rev-parse --short "origin/${GITHUB_HEAD_REF:-HEAD}")

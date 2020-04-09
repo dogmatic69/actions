@@ -9,11 +9,8 @@ module.exports = (config) => ({
       name: 'File Lint',
       steps: [
         libs.checkout(),
-        ...libs.fileChecks(config.file),
-        {
-          name: 'Checkmake',
-          uses: 'dogmatic69/actions/file/lint/checkmake@master',
-        },
+        ...libs.fileChecks(config.file.checks),
+        ...libs.additionalSteps(config.file.steps),
       ],
     }),
 
@@ -23,14 +20,7 @@ module.exports = (config) => ({
       steps: [
         libs.checkout(0),
         ...libs.gitChecks(config.git.checks),
-        ...libs.conditionalStep(config.git.leaks !== false, {
-          name: 'Git Leaks',
-          uses: 'dogmatic69/actions/git/audit/gitleaks@master',
-        }),
-        ...libs.conditionalStep(config.git['commit-lint'] !== false, {
-          name: 'Commit Lint',
-          uses: 'uses: dogmatic69/actions/git/lint/commit-lint@master',
-        }),
+        ...libs.additionalSteps(config.git.steps),
       ],
     }),
 
