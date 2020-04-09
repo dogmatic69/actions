@@ -1,12 +1,12 @@
 FROM node:10-alpine
 
 RUN apk --no-cache add \
-    git=2.24.1-r0 \
+    git= \
     bash=5.0.11-r1
 
 WORKDIR /work
 
-RUN yarn install
+RUN yarn global add @commitlint/config-angular @commitlint/cli
 
 COPY files/ /
 
