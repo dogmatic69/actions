@@ -29,7 +29,7 @@ jobs:
 
             describe what it is you are changing.
       - name: Hack to triger CI
-        uses: dogmatic69/close-pull-request@master
+        uses: dogmatic69/actions/automations/pr-toggle@master
         env:
           GITHUB_TOKEN: '${{ secrets.OWNER_TOKEN }}'
   auto-pull-request-bug:
