@@ -15,3 +15,4 @@ Below is a list of all the available GitHub actions.
 - [Checkmake](./file-lint-checkmake.md)
 - [GitLeaks](./git-audit-gitleaks.md)
 - [Git Lint](./git-lint-awesome-ci.md)
+- [Commit Lint](./git-lint-commit-lint.md)
