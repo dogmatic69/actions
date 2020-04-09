@@ -1,0 +1,5 @@
+name: "Toggle Pull Request"
+description: "A GitHub action to automatically toggle a pull request"
+runs:
+  using: 'docker'
+  image: 'Dockerfile'

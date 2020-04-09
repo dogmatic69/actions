@@ -17,7 +17,7 @@ jobs:
       - name: pull-request-action
         uses: vsoch/pull-request-action@master
         env:
-          GITHUB_TOKEN: '${{ secrets.OWNER_TOKEN }}'
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
           BRANCH_PREFIX: feature/
           PULL_REQUEST_BRANCH: master
           PULL_REQUEST_TITLE: "WIP: Merge ${{ steps.pr-id.outputs.id }} into master \U0001F648"
@@ -28,6 +28,11 @@ jobs:
             clearly
 
             describe what it is you are changing.
+      - name: Hack to triger CI
+        uses: dogmatic69/actions/automations/pr-toggle@master
+        env:
+          PULL_REQUEST_NUMBER: '${{ steps.pull-request-action.pull_request_number }}'
+          GITHUB_TOKEN: '${{ secrets.OWNER_TOKEN }}'
   auto-pull-request-bug:
     name: Auto PR BugFix
     runs-on: ubuntu-latest

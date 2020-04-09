@@ -33,8 +33,10 @@ raw:
             An automated feature PR has been created.
             Once you are ready, update the title of this PR and the body to clearly
             describe what it is you are changing.
-      - uses: dogmatic69/close-pull-request@master
+      - name: Hack to triger CI
+        uses: dogmatic69/actions/automations/pr-toggle@master
         env:
+          PULL_REQUEST_NUMBER: ${{ steps.pull-request-action.pull_request_number }}
           GITHUB_TOKEN: ${{ secrets.OWNER_TOKEN }}
   auto-pull-request-bug:
     name: Auto PR BugFix
