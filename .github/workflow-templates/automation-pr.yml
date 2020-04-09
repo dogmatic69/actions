@@ -25,7 +25,7 @@ raw:
       - name: pull-request-action
         uses: vsoch/pull-request-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.OWNER_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH_PREFIX: "feature/"
           PULL_REQUEST_BRANCH: "master"
           PULL_REQUEST_TITLE: "WIP: Merge ${{ steps.pr-id.outputs.id }} into master 🙈"
@@ -33,6 +33,9 @@ raw:
             An automated feature PR has been created.
             Once you are ready, update the title of this PR and the body to clearly
             describe what it is you are changing.
+      - uses: dogmatic69/close-pull-request@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.OWNER_TOKEN }}
   auto-pull-request-bug:
     name: Auto PR BugFix
     runs-on: ubuntu-latest
