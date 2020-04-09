@@ -8,18 +8,24 @@ project: false
 terraform: false
 
 file:
-  cr: []
-  crlf: []
-  trailing-newline: []
-  trailing-single-newline: []
-  utf8: []
-  utf8-bom: []
-  trailing-space: []
+  checks:
+    cr: []
+    crlf: []
+    trailing-newline: []
+    trailing-single-newline: []
+    utf8: []
+    utf8-bom: []
+    trailing-space: []
+  steps:
+    Checkmake: dogmatic69/actions/file/lint/checkmake@master
 
 git:
   checks:
     - conflicts
     - ignored
+  steps:
+    'Git Leaks': dogmatic69/actions/git/audit/gitleaks@master
+    'Commit Lint': dogmatic69/actions/git/lint/commit-lint@master
 
 trivy:
   matrix:
