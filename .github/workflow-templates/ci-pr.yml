@@ -17,8 +17,9 @@ file:
   trailing-space: []
 
 git:
-  - conflicts
-  - ignored
+  checks:
+    - conflicts
+    - ignored
 
 trivy:
   matrix:

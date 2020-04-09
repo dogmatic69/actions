@@ -72,6 +72,8 @@ module.exports = (() => {
     return ret;
   };
 
+  self.conditionalStep = (condition, step) => condition === true ? [step] : [];
+
   self.gitChecks = (config) => {
     return (config || []).map(check => ({
       name: `Git ${check}`,
