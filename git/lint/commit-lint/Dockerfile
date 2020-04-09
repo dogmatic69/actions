@@ -6,7 +6,7 @@ RUN apk --no-cache add \
 
 WORKDIR /work
 
-RUN yarn install
+RUN npm install -g --unsafe-perm @commitlint/cli @commitlint/config-angular
 
 COPY files/ /
 
