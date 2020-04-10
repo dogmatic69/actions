@@ -18,17 +18,16 @@ const prId = () => {
 };
 
 module.exports = async () => {
-  core.info(JSON.stringify(process.env))
   const token = process.env['GITHUB_TOKEN'];
   if (!token) {
     return core.setFailed('No token provided')
   }
+  const client = new github.GitHub(token);
+
   const pr = prId();
   if (!pr) {
     return core.setFailed('No PR number provided')
   }
-
-  const client = new github.GitHub(token);
 
   core.info('Updating the state of a pull request to [closed]');
   try {
