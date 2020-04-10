@@ -1,20 +1,42 @@
+const fs = require('fs');
 const core = require('@actions/core');
 const github = require('@actions/github');
 
-const prId = () => {
-  if (process.env['PULL_REQUEST_NUMBER']) {
+const prId = (event) => {
+  if (parseInt(process.env['PULL_REQUEST_NUMBER']) > 0) {
     core.info(`PR # from automated PR action [${process.env['PULL_REQUEST_NUMBER']}]`);
     return process.env['PULL_REQUEST_NUMBER'];
   }
 
   const result = /refs\/pull\/(\d+)\/merge/g.exec(process.env['GITHUB_REF']);
-  if (!result) {
-    return null;
+  if (result) {
+    const [, pullRequestId] = result;
+    if (parseInt(pullRequestId) > 1) {
+      core.inf(`PR # from existing PR [${pullRequestId}]`);
+      return pullRequestId;
+    }
   }
-  const [, pullRequestId] = result;
 
-  core.inf(`PR # from existing PR [${pullRequestId}]`)
-  return pullRequestId;
+  core.info(`file: ${process.env.GITHUB_EVENT_PATH}`);
+  if (event.pull_request && parseInt(event.pull_request.number) > 0) {
+    core.inf(`PR # from GITHUB_EVENT_PATH [${event.pull_request.number}]`);
+    return event.pull_request.number;
+  }
+
+  return null;
+};
+
+const prIdFromHash = async (client, config) => {
+  const data = await client.request(
+    `GET /repos/${config.owner}/${config.repo}/commits/${config.hash}/pulls`
+  );
+  core.info(`Data: ${JSON.stringify(data.data[0])}`);
+
+  const pr = data.data[0]
+  if (pr && parseInt(pr.number) > 0) {
+    core.info(`PR # from existing PR [${pr.number}]`);
+    return pr.number;
+  }
 };
 
 module.exports = async () => {
@@ -22,9 +44,22 @@ module.exports = async () => {
   if (!token) {
     return core.setFailed('No token provided')
   }
-  const client = new github.GitHub(token);
+  const client = new github.GitHub(token, {
+    previews: ["groot-preview"],
+  });
 
-  const pr = prId();
+  const event = JSON.parse(
+    fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')
+  )
+
+  let pr = prId(event);
+  if (!pr) {
+    pr = prIdFromHash(client, {
+      owner: event.repository.owner.name,
+      repo: event.repository.name,
+      hash: event.after,
+    });
+  }
   if (!pr) {
     return core.setFailed('No PR number provided')
   }
