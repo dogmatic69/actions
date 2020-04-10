@@ -4,6 +4,21 @@ module.exports = (config) => ({
   name: config.name,
   on: config.on,
   jobs: {
+
+    ...libs.job({
+      include: config.workflow !== false,
+      name: 'Workflow Check',
+      steps: [
+        libs.checkout(),
+        libs.run('Configurator', [
+          'make -C ${GITHUB_WORKSPACE}/src/configurator run-all',
+          'git status',
+          'git diff-index --quiet HEAD -- || echo "Changes found in workflow, please update"',
+          'git diff-index --quiet HEAD --',
+        ]),
+      ],
+    }),
+
     ...libs.job({
       include: config.file !== false,
       name: 'File Lint',
