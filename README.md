@@ -15,7 +15,6 @@ See here for the [full docs][1]
 # Examples of use
 
 ## This Project
-
 This project does some hard core [dogfooding][4].  :). Have a look
 in the [workflows folder][2] to see how we've implemented the actions.
 
