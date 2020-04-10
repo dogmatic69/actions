@@ -20,7 +20,6 @@ This project does some hard core [dogfooding][4].  :). Have a look
 in the [workflows folder][2] to see how we've implemented the actions.
 
 ## Micro Services
-
 - The [Awesome Project][3] is a monorepo setup making use of these actions
 and more.
 
