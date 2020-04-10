@@ -28,6 +28,9 @@ jobs:
             clearly
 
             describe what it is you are changing.
+      - name: debug
+        run: |
+          echo "PR number: ${{ steps.pull-request-action.pull_request_number }}"
       - name: Hack to triger CI
         uses: dogmatic69/actions/automations/pr-toggle@master
         env:
