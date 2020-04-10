@@ -23,6 +23,7 @@ raw:
         run: echo "##[set-output name=id;]$(echo ${GITHUB_REF#refs/heads/})"
         id: pr-id
       - name: pull-request-action
+        id: pr-number
         uses: vsoch/pull-request-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -36,7 +37,7 @@ raw:
       - name: Hack to triger CI
         uses: dogmatic69/actions/automations/pr-toggle@master
         env:
-          PULL_REQUEST_NUMBER: ${{ steps.pull-request-action.pull_request_number }}
+          PULL_REQUEST_NUMBER: ${{ steps.pr-number.outputs.pull_request_number }}
           GITHUB_TOKEN: ${{ secrets.OWNER_TOKEN }}
   auto-pull-request-bug:
     name: Auto PR BugFix
