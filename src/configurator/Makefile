@@ -17,7 +17,7 @@ build:
 
 .PHONY: run
 run:
-	docker run --rm -it \
+	docker run --rm -i \
 		-e ROOT_DIR=/repo \
 		-v $(realpath ${REPO_PATH}):/repo \
 		configurator /src/index.js $(TEMPLATE)

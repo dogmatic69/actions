@@ -6,6 +6,24 @@ name: automation pr
       - bugfix/*
       - release/*
 jobs:
+  workflow-check:
+    name: Workflow Check
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Configurator
+        run: >
+          make -C ${GITHUB_WORKSPACE}/src/configurator run-all
+
+          git status
+
+          git diff-index --quiet HEAD -- || echo "Changes found in workflow,
+          please update"
+
+          git diff-index --quiet HEAD --
+    runs-on: ubuntu-latest
   auto-pull-request-feature:
     name: Auto PR Feature
     runs-on: ubuntu-latest
