@@ -1,20 +1,27 @@
+const fs = require('fs');
 const core = require('@actions/core');
 const github = require('@actions/github');
 
 const prId = () => {
-  if (process.env['PULL_REQUEST_NUMBER']) {
+  if (parseInt(process.env['PULL_REQUEST_NUMBER']) > 0) {
     core.info(`PR # from automated PR action [${process.env['PULL_REQUEST_NUMBER']}]`);
     return process.env['PULL_REQUEST_NUMBER'];
   }
 
   const result = /refs\/pull\/(\d+)\/merge/g.exec(process.env['GITHUB_REF']);
-  if (!result) {
-    return null;
+  if (result) {
+    const [, pullRequestId] = result;
+    if (parseInt(pullRequestId) > 1) {
+      core.inf(`PR # from existing PR [${pullRequestId}]`);
+      return pullRequestId;
+    }
   }
-  const [, pullRequestId] = result;
 
-  core.inf(`PR # from existing PR [${pullRequestId}]`)
-  return pullRequestId;
+  const ev = JSON.parse(
+    fs.readFileSync(process.env.GITHUB_EVENT_PATH, 'utf8')
+  )
+  core.inf(`PR # from GITHUB_EVENT_PATH [${ev.pull_request.number}]`);
+  return ev.pull_request.number;
 };
 
 module.exports = async () => {
