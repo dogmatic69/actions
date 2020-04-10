@@ -3,7 +3,6 @@
 A collection of GitHub actions to push quality code agenda in an automated way.
 
 See here for the [full docs][1]
-
 ## Status
 [![](https://github.com/dogmatic69/actions/workflows/ci%20master/badge.svg)](https://github.com/dogmatic69/actions)
 [![](https://github.com/dogmatic69/actions/workflows/ci%20pr/badge.svg)](https://github.com/dogmatic69/actions)
