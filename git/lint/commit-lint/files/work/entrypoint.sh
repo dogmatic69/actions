@@ -18,11 +18,13 @@ if [ -z ${CONFIG_FILE} ]; then
 fi
 
 echo "config: ${CONFIG_FILE}"
+echo "Patern to match: [${INPUT_PATTERN}]"
 
 git fetch
 
 start=$(git -C "${REPO}" rev-parse --short "origin/${GITHUB_BASE_REF:-master}")
 end=$(git -C "${REPO}" rev-parse --short "origin/${GITHUB_HEAD_REF:-HEAD}")
+
 
 MATCHED_ONCE=false
 for COMMIT_HASH in $(git -C ${REPO} log --pretty="%h" ${start}..${end}); do
@@ -50,11 +52,13 @@ for COMMIT_HASH in $(git -C ${REPO} log --pretty="%h" ${start}..${end}); do
     exit 1;
   fi
 
-  if [[ "${COMMIT_MESSAGE}" =~ ${INPUT_PATTERN} ]]; then
+  echo "grep -q ${INPUT_PATTERN}"
+  if echo "${COMMIT_MESSAGE}" | grep -q ${INPUT_PATTERN}; then
+    echo "Found required patern in the commit message! [${INPUT_PATTERN}]";
     MATCHED_ONCE=true
   fi
 
-  if [ ${INPUT_PATTERN_EVERY_COMMIT} ] && ! [[ "${COMMIT_MESSAGE}" =~ ${INPUT_PATTERN} ]]; then
+  if [[ "${INPUT_PATTERN_EVERY_COMMIT}" = true ]] && ! [[ "${COMMIT_MESSAGE}" =~ ${INPUT_PATTERN} ]]; then
     echo "Commit is missing ticket reference [${INPUT_PATTERN}]";
     echo "Commit: ${COMMIT_HASH}";
     exit 1;
@@ -68,7 +72,7 @@ for COMMIT_HASH in $(git -C ${REPO} log --pretty="%h" ${start}..${end}); do
   fi
 done
 
-if [ -n "${INPUT_PATTERN}" ] && [ ${MATCHED_ONCE} == false ]; then
+if [ -n "${INPUT_PATTERN}" ] && [[ ! "${MATCHED_ONCE}" = true ]]; then
   echo "Failed to match at least one ticket reference [${INPUT_PATTERN}]";
   exit 1;
 fi
