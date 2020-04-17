@@ -26,3 +26,10 @@ jobs:
       - uses: actions/labeler@v2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
+  size-label:
+    runs-on: ubuntu-latest
+    steps:
+      - name: size-label
+        uses: pascalgn/size-label-action@master
+        env:
+          GITHUB_TOKEN: '${{ secrets.GITHUB_TOKEN }}'
