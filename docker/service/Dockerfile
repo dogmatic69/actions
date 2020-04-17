@@ -1,6 +1,6 @@
 FROM alpine:3
 
-RUN apk add --no-cache bash=5.0.11-r1 make=4.2.1-r2
+RUN apk add --no-cache bash~=5.0 make~=4.2
 
 COPY files/ /
 
