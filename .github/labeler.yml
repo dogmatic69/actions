@@ -1,21 +1,35 @@
 # For the actual actions
-actions:
-  - docker/**
-  - file/**
-  - git/**
-
-# Maintaining the actions
-ci:
-  - .github/workflows/*
-  - src/documentation/**
+wip:
+  - ./*
+  - '**'
 
 maintainence:
   - ./*
   - .github/*
   - .github/ISSUE_TEMPLATE/*
 
+# Maintaining the actions
+ci:
+  - .github/workflows/*
+  - src/documentation/**
+
 documentation:
   - README.md
   - ./**/README*
   - docs/**
   - src/documentation/**
+
+scripts:
+  - src/**
+
+actions|automations:
+  - automations/**
+
+actions|docker:
+  - docker/**
+
+actions|file:
+  - file/**
+
+actions|git:
+  - git/**

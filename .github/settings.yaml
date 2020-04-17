@@ -1,0 +1,67 @@
+# ingka-group-digital/customer-support-returns:.github/settings.yml
+repository:
+  # See https://developer.github.com/v3/repos/#edit for all available settings.
+  name: actions
+  description: A collection of GitHub actions to kick start any project
+  topics: ci, cd, ci/cd, automation, testing, docker, actions, DevOps, SecOps, DevSecOps
+
+  has_issues: true
+  has_wiki: true
+  has_downloads: true
+  default_branch: master
+  allow_squash_merge: false
+  allow_rebase_merge: false
+
+labels:
+  # General
+  - name: wip
+    color: A83944
+    description: Used to block in progress PRs from being merged.
+  - name: maintenance
+    color: 6BA890
+    description: General repo maintenance / configuration
+  - name: ci
+    color: E8A4BC
+    description: Changes related to automation
+  - name: documentation
+    color: F4B7F4
+    description: Documentation updates
+
+
+  # PR Sizes
+  - name: size/XS
+    color: 009900
+    description: Denotes a PR that changes 0-9 lines, ignoring generated files.
+  - name: size/S
+    color: 77bb00
+    description: Denotes a PR that changes 10-29 lines, ignoring generated files.
+  - name: size/M
+    color: eebb00
+    description: Denotes a PR that changes 30-99 lines, ignoring generated files.
+  - name: size/L
+    color: ee9900
+    description: Denotes a PR that changes 100-499 lines, ignoring generated files.
+  - name: size/XL
+    color: ee5500
+    description: Denotes a PR that changes 500-999 lines, ignoring generated files.
+  - name: size/XXL
+    color: ee0000
+    description: Denotes a PR that changes 1000+ lines, ignoring generated files.
+
+  # Project specifics
+
+  - name: scripts
+    description: Changes made to project scripts
+    color: 9b02a8
+  - name: actions|automations
+    description: Changes made to actions related to automation actions
+    color: 9b12a8
+  - name: actions|docker
+    description: Changes made to actions related to docker actions
+    color: 9b22a8
+  - name: actions|file
+    description: Changes made to actions related to file actions
+    color: 9b32a8
+  - name: actions|git
+    description: Changes made to actions related to git actions
+    color: 9b42a8
