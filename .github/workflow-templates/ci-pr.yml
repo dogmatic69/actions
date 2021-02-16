@@ -14,4 +14,7 @@ publish:
 
 git:
   steps:
-    'Commit Lint': dogmatic69/actions/git/lint/commit-lint@master
+    - name: 'Commit Lint'
+      uses: dogmatic69/actions/git/lint/commit-lint@master
+      with:
+        depth: 200
