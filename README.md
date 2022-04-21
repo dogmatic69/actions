@@ -32,7 +32,6 @@ in the [workflows folder][2] to see how we've implemented the actions.
 - The [Awesome Project][3] is a monorepo setup making use of these actions
 and more.
 
-
 [1]: https://dogmatic69.github.io/actions/
 [2]: ./.github/workflows
 [3]: https://github.com/dogmatic69/awesome-project
