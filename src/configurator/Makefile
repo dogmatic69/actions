@@ -31,11 +31,11 @@ publish: build
 	echo "GITHUB_HEAD_REF: [${GITHUB_HEAD_REF}]"
 	git log "origin/${GITHUB_HEAD_REF}" --pretty=format:"%H" ./ | head -1 | cut -c1-8
 
-	$(MAKE) docker-tag-github DOCKER_TAG=latest
-	$(MAKE) docker-push-github DOCKER_TAG=latest
+	$(MAKE) docker-tag-github DOCKER_TAG=latest-$(ENVIRONMENT)
+	$(MAKE) docker-push-github DOCKER_TAG=latest-$(ENVIRONMENT)
 
-	$(MAKE) docker-tag-github DOCKER_TAG=$(GIT_HASH)
-	$(MAKE) docker-push-github DOCKER_TAG=$(GIT_HASH)
+	$(MAKE) docker-tag-github DOCKER_TAG=$(GIT_HASH)-$(ENVIRONMENT)
+	$(MAKE) docker-push-github DOCKER_TAG=$(GIT_HASH)-$(ENVIRONMENT)
 
 .PHONY: run
 run:
