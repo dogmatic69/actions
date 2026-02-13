@@ -12,7 +12,21 @@ if [ -f "${INPUT_IGNORE:-/.trivyignore}" ]; then
 fi
 
 GITHUB_TOKEN=${INPUT_TOKEN} \
-trivy image --no-progress --exit-code 1 \
+trivy image --no-progress \
+	--scanners vuln \
+	--exit-code 1 \
 	-f json -o "${OUTPUT}" \
 	${IGNOREFILE_FLAG} \
 	"${INPUT_IMAGE}"
+
+SCAN_EXIT=$?
+
+# Print results to the console
+trivy image --no-progress \
+	--scanners vuln \
+	-f table \
+	${IGNOREFILE_FLAG} \
+	--skip-db-update \
+	"${INPUT_IMAGE}"
+
+exit ${SCAN_EXIT}
