@@ -13,16 +13,16 @@ test:
 
 .PHONY: auth-github
 auth-github:
-	echo "${DOCKER_TOKEN}" | docker login -u ${DOCKER_USER} --password-stdin docker.pkg.github.com
+	echo "${DOCKER_TOKEN}" | docker login -u ${DOCKER_USER} --password-stdin ghcr.io
 
 # GitHub
 .PHONY: docker-tag-github
 docker-tag-github:
-	$(MAKE) docker-tag DOCKER_REGISTRY=docker.pkg.github.com
+	$(MAKE) docker-tag DOCKER_REGISTRY=ghcr.io
 
 .PHONY: docker-push-github
 docker-push-github:
-	$(MAKE) docker-push DOCKER_REGISTRY=docker.pkg.github.com
+	$(MAKE) docker-push DOCKER_REGISTRY=ghcr.io
 
 
 # Raw
