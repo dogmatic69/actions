@@ -7,8 +7,8 @@ Lint Makefiles using Checkmake.
 may not do what you want it to.
 
 
-> The latest version available for this action is `40c22b7a`. It was last
-updated on **Thu Apr 21 2022**.
+> The latest version available for this action is `d6926e67`. It was last
+updated on **Fri Feb 13 2026**.
 
 ## Inputs
 
@@ -36,7 +36,7 @@ As a step in pre-existing job.
 
   - uses: actions/checkout@master
   - ... other steps
-  - uses: dogmatic69/actions@40c22b7a
+  - uses: dogmatic69/actions@d6926e67
 
 
 This simple job example has the bare minimum required to run.
@@ -46,7 +46,7 @@ This simple job example has the bare minimum required to run.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: dogmatic69/actions@40c22b7a
+      - uses: dogmatic69/actions@d6926e67
 
 This example has all possible inputs, with dummy data.
 
@@ -55,7 +55,7 @@ This example has all possible inputs, with dummy data.
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@master
-        - uses: dogmatic69/actions@40c22b7a
+        - uses: dogmatic69/actions@d6926e67
         with:
           path: foobar
           max_body_length: foobar
