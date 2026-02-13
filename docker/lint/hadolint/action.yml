@@ -12,9 +12,13 @@ description: |
 
 inputs:
   path:
-    description: Path to search for Dockerfiles that iwll be scanned
+    description: Path to search for Dockerfiles that will be scanned
     required: false
     default: /github/workspace
+  version:
+    description: The version of hadolint to be used
+    required: false
+    default: latest
 runs:
   using: 'docker'
   image: 'Dockerfile'
