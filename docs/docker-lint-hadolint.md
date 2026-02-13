@@ -12,7 +12,7 @@ Adapted from [hadolint/hadolint](https://github.com/hadolint/hadolint)
 [ShellCheck]: https://github.com/koalaman/shellcheck
 
 
-> The latest version available for this action is `1e0d539b`. It was last
+> The latest version available for this action is `e8d22171`. It was last
 updated on **Fri Feb 13 2026**.
 
 ## Inputs
@@ -38,7 +38,7 @@ As a step in pre-existing job.
 
   - uses: actions/checkout@master
   - ... other steps
-  - uses: dogmatic69/actions@1e0d539b
+  - uses: dogmatic69/actions@e8d22171
 
 
 This simple job example has the bare minimum required to run.
@@ -48,7 +48,7 @@ This simple job example has the bare minimum required to run.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: dogmatic69/actions@1e0d539b
+      - uses: dogmatic69/actions@e8d22171
 
 This example has all possible inputs, with dummy data.
 
@@ -57,7 +57,7 @@ This example has all possible inputs, with dummy data.
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@master
-        - uses: dogmatic69/actions@1e0d539b
+        - uses: dogmatic69/actions@e8d22171
         with:
           path: foobar
           version: foobar

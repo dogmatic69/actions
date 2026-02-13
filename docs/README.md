@@ -3,7 +3,7 @@
 
 Below is a list of all the available GitHub actions.
 
-> The latest version available for this action is `1e0d539b`. It was last
+> The latest version available for this action is `e8d22171`. It was last
 updated on **Fri Feb 13 2026**.
 
 [![automation pr](https://github.com/dogmatic69/actions/workflows/automation%20pr/badge.svg)](https://github.com/dogmatic69/actions)
