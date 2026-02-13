@@ -4,7 +4,7 @@ WORKDIR /src
 
 COPY files/src/package.json files/src/yarn.lock /src/
 
-RUN yarn install
+RUN yarn install && yarn cache clean
 
 COPY files/ /
 
