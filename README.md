@@ -3,7 +3,7 @@
 
 A collection of GitHub actions to push quality code agenda in an automated way.
 
-> The latest version available for this action is `e8d22171`. It was last
+> The latest version available for this action is `43c8b143`. It was last
 updated on **Fri Feb 13 2026**.
 
 ## Available Actions
@@ -19,7 +19,6 @@ See here for the [full docs][1]
 [![](https://github.com/dogmatic69&#x2F;actions/workflows//badge.svg)](https://github.com/dogmatic69&#x2F;actions)
 
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdogmatic69%2Factions.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdogmatic69%2Factions?ref=badge_shield)
 
 # Examples of use
 
@@ -38,7 +37,3 @@ and more.
 [2]: ./.github/workflows
 [3]: https://github.com/dogmatic69/awesome-project
 [4]: https://en.wikipedia.org/wiki/Eating_your_own_dog_food
-
-
-## License
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdogmatic69%2Factions.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdogmatic69%2Factions?ref=badge_large)
