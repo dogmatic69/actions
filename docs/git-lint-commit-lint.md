@@ -10,7 +10,7 @@ Adapted from [commit-lint], See also [commitlint-analizer] for more.
 [commit-lint]: https://github.com/conventional-changelog/commitlint
 
 
-> The latest version available for this action is `fafc5b45`. It was last
+> The latest version available for this action is `1e0d539b`. It was last
 updated on **Fri Feb 13 2026**.
 
 ## Inputs
@@ -82,7 +82,7 @@ As a step in pre-existing job.
 
   - uses: actions/checkout@master
   - ... other steps
-  - uses: dogmatic69/actions@fafc5b45
+  - uses: dogmatic69/actions@1e0d539b
 
 
 This simple job example has the bare minimum required to run.
@@ -92,7 +92,7 @@ This simple job example has the bare minimum required to run.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: dogmatic69/actions@fafc5b45
+      - uses: dogmatic69/actions@1e0d539b
 
 This example has all possible inputs, with dummy data.
 
@@ -101,7 +101,7 @@ This example has all possible inputs, with dummy data.
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@master
-        - uses: dogmatic69/actions@fafc5b45
+        - uses: dogmatic69/actions@1e0d539b
         with:
           path: foobar
           title_min_length: foobar

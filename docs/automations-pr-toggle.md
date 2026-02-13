@@ -3,7 +3,7 @@
 
 A GitHub action to automatically toggle a pull request
 
-> The latest version available for this action is `fafc5b45`. It was last
+> The latest version available for this action is `1e0d539b`. It was last
 updated on **Fri Feb 13 2026**.
 
 This action has no inputs.
@@ -14,7 +14,7 @@ As a step in pre-existing job.
 
   - uses: actions/checkout@master
   - ... other steps
-  - uses: dogmatic69/actions@fafc5b45
+  - uses: dogmatic69/actions@1e0d539b
 
 
 This simple job example has the bare minimum required to run.
@@ -24,5 +24,5 @@ This simple job example has the bare minimum required to run.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: dogmatic69/actions@fafc5b45
+      - uses: dogmatic69/actions@1e0d539b
 
