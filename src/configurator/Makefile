@@ -22,6 +22,7 @@ lint: build
 .PHONY: build
 build:
 	docker build -t ${DOCKER_IMAGE} .
+	docker tag ${DOCKER_IMAGE} docker.pkg.github.com/dogmatic69/actions/configurator
 
 .PHONY: publish
 publish: build

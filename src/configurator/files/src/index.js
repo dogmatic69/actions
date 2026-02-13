@@ -31,9 +31,15 @@ const extend = async (template) => {
 
   const template = await extend(config);
   const output = build(template);
+
   output.name = (output.name || process.argv[2].replace('-', ' '));
-  await fs.writeFile(
-    `${process.env.ROOT_DIR}/.github/workflows/${process.argv[2]}.yml`,
-    yaml.safeDump(output),
-  );
+  try {
+    await fs.writeFile(
+      `${process.env.ROOT_DIR}/.github/workflows/${process.argv[2]}.yml`,
+      yaml.safeDump(output),
+    );
+  } catch(e) {
+    console.log(e);
+    return process.exit(1);
+  }
 })();
