@@ -3,7 +3,7 @@
 ####################################
 FROM alpine:3 AS docker
 
-ENV VERSION 19.03.4
+ENV VERSION 27.4.1
 RUN wget "https://download.docker.com/linux/static/stable/x86_64/docker-${VERSION}.tgz" && \
     tar xzvf docker-${VERSION}.tgz
 
