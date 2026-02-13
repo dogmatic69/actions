@@ -33,7 +33,6 @@ in the [workflows folder][2] to see how we've implemented the actions.
 - The [Awesome Project][3] is a monorepo setup making use of these actions
 and more.
 
-
 [1]: https://dogmatic69.github.io/actions/
 [2]: ./.github/workflows
 [3]: https://github.com/dogmatic69/awesome-project
@@ -41,4 +40,5 @@ and more.
 
 
 ## License
+
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fdogmatic69%2Factions.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fdogmatic69%2Factions?ref=badge_large)
