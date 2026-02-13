@@ -1,46 +1,46 @@
 # For the actual actions
 wip:
   - changed-files:
-    - any-glob-to-any-file: '**'
+      - any-glob-to-any-file: '**'
 
 maintainence:
   - changed-files:
-    - any-glob-to-any-file:
-      - './*'
-      - '.github/*'
-      - '.github/ISSUE_TEMPLATE/*'
+      - any-glob-to-any-file:
+          - './*'
+          - '.github/*'
+          - '.github/ISSUE_TEMPLATE/*'
 
 # Maintaining the actions
 ci:
   - changed-files:
-    - any-glob-to-any-file:
-      - '.github/workflows/*'
-      - 'src/documentation/**'
+      - any-glob-to-any-file:
+          - '.github/workflows/*'
+          - 'src/documentation/**'
 
 documentation:
   - changed-files:
-    - any-glob-to-any-file:
-      - 'README.md'
-      - './**/README*'
-      - 'docs/**'
-      - 'src/documentation/**'
+      - any-glob-to-any-file:
+          - 'README.md'
+          - './**/README*'
+          - 'docs/**'
+          - 'src/documentation/**'
 
 scripts:
   - changed-files:
-    - any-glob-to-any-file: 'src/**'
+      - any-glob-to-any-file: 'src/**'
 
 actions|automations:
   - changed-files:
-    - any-glob-to-any-file: 'automations/**'
+      - any-glob-to-any-file: 'automations/**'
 
 actions|docker:
   - changed-files:
-    - any-glob-to-any-file: 'docker/**'
+      - any-glob-to-any-file: 'docker/**'
 
 actions|file:
   - changed-files:
-    - any-glob-to-any-file: 'file/**'
+      - any-glob-to-any-file: 'file/**'
 
 actions|git:
   - changed-files:
-    - any-glob-to-any-file: 'git/**'
+      - any-glob-to-any-file: 'git/**'
