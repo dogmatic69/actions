@@ -3,7 +3,7 @@
 
 Run CI jobs for a particular service in a mono repo
 
-> The latest version available for this action is `9c671062`. It was last
+> The latest version available for this action is `16c3be04`. It was last
 updated on **Fri Feb 13 2026**.
 
 ## Inputs
@@ -29,7 +29,7 @@ As a step in pre-existing job.
 
   - uses: actions/checkout@master
   - ... other steps
-  - uses: dogmatic69/actions@9c671062
+  - uses: dogmatic69/actions@16c3be04
     with:
       service: foobar
       targets: foobar
@@ -42,7 +42,7 @@ This simple job example has the bare minimum required to run.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
-      - uses: dogmatic69/actions@9c671062
+      - uses: dogmatic69/actions@16c3be04
         with:
           service: foobar
           targets: foobar
@@ -54,7 +54,7 @@ This example has all possible inputs, with dummy data.
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@master
-        - uses: dogmatic69/actions@9c671062
+        - uses: dogmatic69/actions@16c3be04
         with:
           service: foobar
           targets: foobar
