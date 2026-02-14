@@ -24,6 +24,10 @@ inputs:
     description: 'Path to the .trivyignore file'
     required: false
     default: /.trivyignore
+  ignore-unfixed:
+    description: 'Skip vulnerabilities with no fix available'
+    required: false
+    default: 'true'
 runs:
   using: 'docker'
   image: 'Dockerfile'
