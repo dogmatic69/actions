@@ -4,7 +4,7 @@ const fs = require('fs').promises;
 const Mustache = require('mustache');
 const slugify = require('slugify');
 
-const getFiles = (regex, dir) => new Promise((resolve) => find.file(regex, dir, resolve));
+const getFiles = (regex, dir) => new Promise((resolve) => { find.file(regex, dir, resolve); });
 
 const writeFile = async (file, data) => {
   const md = `<!-- NOTICE: Auto generated file! -->\n${data}`;
