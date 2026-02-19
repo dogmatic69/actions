@@ -12,7 +12,7 @@
     "lint:fix": "eslint /src --fix"
   },
   "dependencies": {
-    "js-yaml": "^3.13.1",
+    "js-yaml": "^4.0.0",
     "slugify": "^1.4.0",
     "lodash": "4.17.21"
   },
