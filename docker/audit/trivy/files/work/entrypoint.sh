@@ -19,7 +19,6 @@ fi
 GITHUB_TOKEN=${INPUT_TOKEN} \
 trivy image --no-progress \
 	--scanners vuln \
-	--db-repository mirror.gcr.io/aquasec/trivy-db:2 \
 	--db-repository ghcr.io/aquasecurity/trivy-db:2 \
 	--db-repository public.ecr.aws/aquasecurity/trivy-db:2 \
 	${IGNORE_UNFIXED_FLAG} \
