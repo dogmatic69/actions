@@ -27,13 +27,19 @@ module.exports = (() => {
     });
   };
 
-  self.run = (name, commands) => {
+  self.run = (name, commands, condition) => {
     const run = Array.isArray(commands) ? commands : [commands];
     run.push('');
-    return {
+
+    const ret = {
       name,
       run: run.join('\n'),
     };
+
+    if (condition) {
+      ret.if = condition;
+    }
+    return ret;
   };
 
   self.checkout = (depth) => ({
@@ -44,7 +50,7 @@ module.exports = (() => {
     },
   });
 
-  self.fetch = () => self.run('Git Fetch', 'git fetch');
+  self.fetch = (condition) => self.run('Git Fetch', 'git fetch', condition);
 
   self.fileChecks = (config) => Object.keys(config).map((name) => {
     const conf = {
