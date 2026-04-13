@@ -17,6 +17,11 @@ inputs:
       location of `actions/checkout` default path.
     required: false
     default: /github/workspace
+  depth:
+    description: |
+      The number of commits to be scanned.
+    required: false
+    default: "1000"
 runs:
   using: 'docker'
   image: 'Dockerfile'
